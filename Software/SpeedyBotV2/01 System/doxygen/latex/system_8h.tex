@@ -1,0 +1,189 @@
+\hypertarget{system_8h}{}\doxysection{system.\+h File Reference}
+\label{system_8h}\index{system.h@{system.h}}
+
+
+Created\+: 23.\+11.\+2017 08\+:29\+:21 @autor Author\+: schreiberm.  
+
+
+{\ttfamily \#include \char`\"{}uart.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}timer.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}motor.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}line\+\_\+sensors.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}encoder.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}log.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$avr/io.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{system_8h_a29e413f6725b2ba32d165ffaa35b01e5}\label{system_8h_a29e413f6725b2ba32d165ffaa35b01e5}} 
+\#define {\bfseries O\+FF}~10
+\item 
+\mbox{\Hypertarget{system_8h_ad76d1750a6cdeebd506bfcd6752554d2}\label{system_8h_ad76d1750a6cdeebd506bfcd6752554d2}} 
+\#define {\bfseries ON}~16
+\item 
+\mbox{\Hypertarget{system_8h_a437ef08681e7210d6678427030446a54}\label{system_8h_a437ef08681e7210d6678427030446a54}} 
+\#define {\bfseries L\+E\+FT}~0
+\item 
+\mbox{\Hypertarget{system_8h_a80fb826a684cf3f0d306b22aa100ddac}\label{system_8h_a80fb826a684cf3f0d306b22aa100ddac}} 
+\#define {\bfseries R\+I\+G\+HT}~1
+\item 
+\mbox{\Hypertarget{system_8h_ac1d690f9656068bd799542451fa447ba}\label{system_8h_ac1d690f9656068bd799542451fa447ba}} 
+\#define {\bfseries L\+E\+D\+\_\+\+B\+O\+T\+T\+OM}~P\+I\+N\+C6
+\item 
+\mbox{\Hypertarget{system_8h_ab8c518a821c9032e914540215bb53e8a}\label{system_8h_ab8c518a821c9032e914540215bb53e8a}} 
+\#define {\bfseries set\+L\+E\+D\+Blue}()~(P\+O\+R\+TC $\vert$= (1$<$$<$L\+E\+D\+\_\+\+B\+O\+T\+T\+OM))
+\item 
+\mbox{\Hypertarget{system_8h_a1d2688f2c0c65c24cb90ac4866e2a422}\label{system_8h_a1d2688f2c0c65c24cb90ac4866e2a422}} 
+\#define {\bfseries clear\+L\+E\+D\+Blue}()~(P\+O\+R\+TC \&= $\sim$(1$<$$<$L\+E\+D\+\_\+\+B\+O\+T\+T\+OM))
+\item 
+\mbox{\Hypertarget{system_8h_acfbc006ea433ad708fdee3e82996e721}\label{system_8h_acfbc006ea433ad708fdee3e82996e721}} 
+\#define {\bfseries G\+R\+E\+EN}~0
+\item 
+\mbox{\Hypertarget{system_8h_a8d23feea868a983c8c2b661e1e16972f}\label{system_8h_a8d23feea868a983c8c2b661e1e16972f}} 
+\#define {\bfseries R\+ED}~1
+\item 
+\mbox{\Hypertarget{system_8h_abf681265909adf3d3e8116c93c0ba179}\label{system_8h_abf681265909adf3d3e8116c93c0ba179}} 
+\#define {\bfseries Y\+E\+L\+L\+OW}~3
+\item 
+\mbox{\Hypertarget{system_8h_a19933e81840df2b24601c5836a9e8cc3}\label{system_8h_a19933e81840df2b24601c5836a9e8cc3}} 
+\#define {\bfseries start\+Button}()~!( P\+I\+NB \& (1$<$$<$P\+I\+N\+B4) )
+\item 
+\mbox{\Hypertarget{system_8h_aed848c81c6dce7ec0d90f2758e2f2351}\label{system_8h_aed848c81c6dce7ec0d90f2758e2f2351}} 
+\#define {\bfseries user\+Button}()~!( P\+I\+NB \& (1$<$$<$P\+I\+N\+B3) )
+\item 
+\mbox{\Hypertarget{system_8h_a0258703bd97feb7cc7f7a1ac35b19d2b}\label{system_8h_a0258703bd97feb7cc7f7a1ac35b19d2b}} 
+\#define {\bfseries E\+N\+C\+O\+D\+E\+R\+\_\+\+L\+E\+FT}~0
+\item 
+\mbox{\Hypertarget{system_8h_a4c8263c5cd6d524cf071e559f6c2fb72}\label{system_8h_a4c8263c5cd6d524cf071e559f6c2fb72}} 
+\#define {\bfseries E\+N\+C\+O\+D\+E\+R\+\_\+\+R\+I\+G\+HT}~1
+\item 
+\mbox{\Hypertarget{system_8h_abc1f6c06903ed12fb246a43dc9d9881c}\label{system_8h_abc1f6c06903ed12fb246a43dc9d9881c}} 
+\#define {\bfseries E\+N\+\_\+\+B\+L\+U\+E\+T\+O\+O\+TH}~1
+\item 
+\mbox{\Hypertarget{system_8h_a311c03c38af6128af845c336474872dd}\label{system_8h_a311c03c38af6128af845c336474872dd}} 
+\#define {\bfseries E\+N\+\_\+\+E\+N\+C\+O\+D\+E\+RS}~3
+\item 
+\mbox{\Hypertarget{system_8h_afcc11f95c092650f5852d611e17391ff}\label{system_8h_afcc11f95c092650f5852d611e17391ff}} 
+\#define {\bfseries E\+N\+\_\+\+A\+LL}~0x\+FF
+\item 
+\mbox{\Hypertarget{system_8h_ab9664f518e8fe3157cef6aef014d0123}\label{system_8h_ab9664f518e8fe3157cef6aef014d0123}} 
+\#define {\bfseries V\+\_\+\+B\+A\+T\+T\+\_\+\+M\+IN}~6800
+\item 
+\mbox{\Hypertarget{system_8h_a78bd16b40e563713bb92b7a7d0f10b98}\label{system_8h_a78bd16b40e563713bb92b7a7d0f10b98}} 
+\#define {\bfseries V\+\_\+\+R\+EF}~5000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{system_8h_a5f32678ab8c41683d2d177a3f1fde86d}\label{system_8h_a5f32678ab8c41683d2d177a3f1fde86d}} 
+void {\bfseries set\+Status\+L\+ED} (uint8\+\_\+t led)
+\item 
+\mbox{\Hypertarget{system_8h_ad280ffe3cd25c5e75ef134d91b7a2b54}\label{system_8h_ad280ffe3cd25c5e75ef134d91b7a2b54}} 
+void {\bfseries enable\+Device} (uint8\+\_\+t device)
+\item 
+\mbox{\Hypertarget{system_8h_a0e3f1f058f14677b4b5c7a88af341363}\label{system_8h_a0e3f1f058f14677b4b5c7a88af341363}} 
+void {\bfseries disable\+Device} (uint8\+\_\+t device)
+\item 
+\mbox{\Hypertarget{system_8h_a40e1b34a7a65cac4da25cdf311b31742}\label{system_8h_a40e1b34a7a65cac4da25cdf311b31742}} 
+void {\bfseries wait\+Start} (void)
+\item 
+void \mbox{\hyperlink{system_8h_a479870af9c86bba9c04bc28102c14c4c}{battery\+\_\+set\+State\+Changed\+Handler}} (void($\ast$battery\+Handler)(void))
+\item 
+void \mbox{\hyperlink{system_8h_a1e3a44fc66d31557628df9f97accbad5}{com\+\_\+set\+State\+Changed\+Handler}} (void($\ast$com\+Handler)(void))
+\item 
+\mbox{\Hypertarget{system_8h_abcd9b6aa6fbceca6ff214b7b4ba4e247}\label{system_8h_abcd9b6aa6fbceca6ff214b7b4ba4e247}} 
+void {\bfseries line\+\_\+set\+State\+Changed\+Handler} (void($\ast$line\+Handler)(void))
+\item 
+void \mbox{\hyperlink{system_8h_ae1b3073d892a77e6b15d907ce4628e31}{drive\+\_\+set\+State\+Changed\+Handler}} (void($\ast$drive\+Handler)(void))
+\item 
+void \mbox{\hyperlink{system_8h_ab11a117f1e08391f23d1da05930e7acf}{system\+Init}} (void)
+\begin{DoxyCompactList}\small\item\em Initialisiert die Hardware (Ports, A\+DC, P\+WM) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{system_8h_aa9c5c9d3e9d68dc3285d925c00d3a95a}\label{system_8h_aa9c5c9d3e9d68dc3285d925c00d3a95a}} 
+uint16\+\_\+t {\bfseries adc\+\_\+\+Read} (uint8\+\_\+t channel)
+\item 
+\mbox{\Hypertarget{system_8h_aa8000ffefef33234f1f846371feb8ca3}\label{system_8h_aa8000ffefef33234f1f846371feb8ca3}} 
+uint16\+\_\+t {\bfseries adc\+\_\+\+Read\+\_\+\+Avg} (uint8\+\_\+t channel, uint8\+\_\+t nsamples)
+\item 
+\mbox{\Hypertarget{system_8h_adef94e6f1a24cb5fc0b83dfa127fad0a}\label{system_8h_adef94e6f1a24cb5fc0b83dfa127fad0a}} 
+void {\bfseries uart\+\_\+put\+Int} (int16\+\_\+t number)
+\item 
+\mbox{\Hypertarget{system_8h_a41dbcd46393eb2a6618ea974b3f926dc}\label{system_8h_a41dbcd46393eb2a6618ea974b3f926dc}} 
+uint32\+\_\+t {\bfseries get\+\_\+time\+\_\+ms} (void)
+\item 
+\mbox{\Hypertarget{system_8h_accb4730f803fe7a47d8d8d191d7fdb90}\label{system_8h_accb4730f803fe7a47d8d8d191d7fdb90}} 
+uint16\+\_\+t {\bfseries get\+\_\+time\+\_\+s} (void)
+\item 
+\mbox{\Hypertarget{system_8h_a9be668f970503804224b78e50f3ed196}\label{system_8h_a9be668f970503804224b78e50f3ed196}} 
+void {\bfseries time\+\_\+reset} (void)
+\item 
+\mbox{\Hypertarget{system_8h_a1a504ed895f5de87faefd544a3870b5b}\label{system_8h_a1a504ed895f5de87faefd544a3870b5b}} 
+uint16\+\_\+t {\bfseries batt\+\_\+voltage} (void)
+\item 
+\mbox{\Hypertarget{system_8h_a28d11978a90b6f2e812578398236e54b}\label{system_8h_a28d11978a90b6f2e812578398236e54b}} 
+void {\bfseries task\+System} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{system_8h_a002bc7262576282d178494a4d3d11eae}\label{system_8h_a002bc7262576282d178494a4d3d11eae}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\mbox{\Hypertarget{struct_0d11_a7b1aeee171f011ba8848a23066f390ae}\label{struct_0d11_a7b1aeee171f011ba8848a23066f390ae}} 
+\>union \{\\
+\>\>uint8\_t {\bfseries byte}\\
+\mbox{\Hypertarget{union_0d11_1_1_0d12_a2e40711359b9d8a7cff38902fc6ae29f}\label{union_0d11_1_1_0d12_a2e40711359b9d8a7cff38902fc6ae29f}} 
+\>\>struct \{\\
+\>\>\>uint8\_t {\bfseries pwrON}:1\\
+\>\>\>uint8\_t {\bfseries bottomLeds}:1\\
+\>\>\>uint8\_t {\bfseries bluetooth}:1\\
+\>\>\>uint8\_t {\bfseries lowBatt}:1\\
+\>\>\>uint8\_t {\bfseries encoders}:1\\
+\>\>\>uint8\_t {\bfseries error}:1\\
+\>\>\>uint8\_t {\bfseries reserve}:2\\
+\>\>\} \\
+\>\} \\
+\>uint16\_t {\bfseries battery}\\
+\>uint32\_t {\bfseries time}\\
+\} \mbox{\hyperlink{system_8h_a002bc7262576282d178494a4d3d11eae}{systemStatus}}\\
+
+\end{tabbing}\begin{DoxyCompactList}\small\item\em Systemwerte und Flags von Speedy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Created\+: 23.\+11.\+2017 08\+:29\+:21 @autor Author\+: schreiberm. 
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{system_8h_a479870af9c86bba9c04bc28102c14c4c}\label{system_8h_a479870af9c86bba9c04bc28102c14c4c}} 
+\index{system.h@{system.h}!battery\_setStateChangedHandler@{battery\_setStateChangedHandler}}
+\index{battery\_setStateChangedHandler@{battery\_setStateChangedHandler}!system.h@{system.h}}
+\doxysubsubsection{\texorpdfstring{battery\_setStateChangedHandler()}{battery\_setStateChangedHandler()}}
+{\footnotesize\ttfamily void battery\+\_\+set\+State\+Changed\+Handler (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{battery\+Handler }\end{DoxyParamCaption})}
+
+Use this function to set the Low-\/\+Battery state change handler. \mbox{\Hypertarget{system_8h_a1e3a44fc66d31557628df9f97accbad5}\label{system_8h_a1e3a44fc66d31557628df9f97accbad5}} 
+\index{system.h@{system.h}!com\_setStateChangedHandler@{com\_setStateChangedHandler}}
+\index{com\_setStateChangedHandler@{com\_setStateChangedHandler}!system.h@{system.h}}
+\doxysubsubsection{\texorpdfstring{com\_setStateChangedHandler()}{com\_setStateChangedHandler()}}
+{\footnotesize\ttfamily void com\+\_\+set\+State\+Changed\+Handler (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{com\+Handler }\end{DoxyParamCaption})}
+
+Use this function to set the Comunication state change handler. \mbox{\Hypertarget{system_8h_ae1b3073d892a77e6b15d907ce4628e31}\label{system_8h_ae1b3073d892a77e6b15d907ce4628e31}} 
+\index{system.h@{system.h}!drive\_setStateChangedHandler@{drive\_setStateChangedHandler}}
+\index{drive\_setStateChangedHandler@{drive\_setStateChangedHandler}!system.h@{system.h}}
+\doxysubsubsection{\texorpdfstring{drive\_setStateChangedHandler()}{drive\_setStateChangedHandler()}}
+{\footnotesize\ttfamily void drive\+\_\+set\+State\+Changed\+Handler (\begin{DoxyParamCaption}\item[{void($\ast$)(void)}]{drive\+Handler }\end{DoxyParamCaption})}
+
+Use this function to set the drive state change handler. \mbox{\Hypertarget{system_8h_ab11a117f1e08391f23d1da05930e7acf}\label{system_8h_ab11a117f1e08391f23d1da05930e7acf}} 
+\index{system.h@{system.h}!systemInit@{systemInit}}
+\index{systemInit@{systemInit}!system.h@{system.h}}
+\doxysubsubsection{\texorpdfstring{systemInit()}{systemInit()}}
+{\footnotesize\ttfamily void system\+Init (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Initialisiert die Hardware (Ports, A\+DC, P\+WM) 
+
+Diese Funktion muss als erstes aufgerufen werden. 
